@@ -22,6 +22,7 @@ model Activity {
   image_mode      String?
   image_id        String?
   price           Int
+  numberOfSlots   Int
   category        Category? @relation("Activity_category", fields: [categoryId], references: [id])
   categoryId      String?   @map("category") @postgresql.Uuid
   multipleDays    Boolean   @default(false)

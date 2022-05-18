@@ -7,6 +7,7 @@ type Activity {
   description: String
   image: ImageFieldOutput
   price: Int
+  numberOfSlots: Int
   category: Category
   multipleDays: Boolean
   date: DateTime
@@ -47,6 +48,7 @@ input ActivityWhereInput {
   title: StringFilter
   description: StringFilter
   price: IntFilter
+  numberOfSlots: IntFilter
   category: CategoryWhereInput
   multipleDays: BooleanFilter
   date: DateTimeNullableFilter
@@ -131,6 +133,7 @@ input ActivityOrderByInput {
   title: OrderDirection
   description: OrderDirection
   price: OrderDirection
+  numberOfSlots: OrderDirection
   multipleDays: OrderDirection
   date: OrderDirection
   fromDate: OrderDirection
@@ -147,6 +150,7 @@ input ActivityUpdateInput {
   description: String
   image: ImageFieldInput
   price: Int
+  numberOfSlots: Int
   category: CategoryRelateToOneForUpdateInput
   multipleDays: Boolean
   date: DateTime
@@ -180,6 +184,7 @@ input ActivityCreateInput {
   description: String
   image: ImageFieldInput
   price: Int
+  numberOfSlots: Int
   category: CategoryRelateToOneForCreateInput
   multipleDays: Boolean
   date: DateTime
