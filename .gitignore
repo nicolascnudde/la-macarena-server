@@ -1,4 +1,13 @@
+# node modules
 node_modules
+
+# Keystone
 .keystone/admin
 keystone.db
 *.log
+
+# environmental variables
+.env
+
+# MacOS
+.DS_Store
