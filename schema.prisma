@@ -47,16 +47,11 @@ model Category {
 }
 
 model Member {
-  id              String  @id @default(uuid()) @postgresql.Uuid
-  firstName       String  @default("")
-  lastName        String  @default("")
-  image_filesize  Int?
-  image_extension String?
-  image_width     Int?
-  image_height    Int?
-  image_mode      String?
-  image_id        String?
-  origin          String  @default("")
+  id        String @id @default(uuid()) @postgresql.Uuid
+  firstName String @default("")
+  lastName  String @default("")
+  image     Json?
+  origin    String @default("")
 }
 
 model User {

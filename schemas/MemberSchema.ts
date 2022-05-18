@@ -1,14 +1,22 @@
-import { list } from "@keystone-6/core";
-import {
-  image,
-  text,
-} from "@keystone-6/core/fields";
+import 'dotenv/config';
+import { list } from '@keystone-6/core';
+import { image, text } from '@keystone-6/core/fields';
+import { cloudinaryImage } from '@keystone-6/cloudinary';
+
+export const cloudinary = {
+  cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
+  apiKey: process.env.CLOUDINARY_API_KEY ?? '',
+  apiSecret: process.env.CLOUDINARY_API_SECRET ?? '',
+  folder: 'members',
+};
 
 export const MemberSchema = list({
   fields: {
     firstName: text({ validation: { isRequired: true } }),
     lastName: text({ validation: { isRequired: true } }),
-    image: image(),
+    image: cloudinaryImage({
+      cloudinary,
+    }),
     origin: text({ validation: { isRequired: true } }),
   },
 });
