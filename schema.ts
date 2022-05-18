@@ -14,7 +14,9 @@ A field: The individual bits of data on your list, each with its own type.
 import { Lists } from '.keystone/types';
 
 import { UserSchema } from './schemas/UserSchema';
+import { MemberSchema } from './schemas/MemberSchema';
 
 export const lists: Lists = {
   User: UserSchema,
+  Member: MemberSchema,
 };

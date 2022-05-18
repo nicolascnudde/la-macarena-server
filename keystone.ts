@@ -22,7 +22,7 @@ export default withAuth(
       provider: 'postgresql',
       url: process.env.DATABASE_URL ?? 'postgres://nicolas:Nikorasu@localhost:5432/la-macarena-keystone-db',
       idField: { kind: 'uuid' },
-      },
+    },
     // This config allows us to set up features of the Admin UI https://keystonejs.com/docs/apis/config#ui
     ui: {
       // For our starter, we check that someone has session data before letting them see the Admin UI.
@@ -30,5 +30,12 @@ export default withAuth(
     },
     lists,
     session,
+    images: {
+      upload: 'local',
+      local: {
+        storagePath: 'public/images',
+        baseUrl: '/images',
+      },
+    },
   })
 );
