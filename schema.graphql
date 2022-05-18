@@ -5,7 +5,7 @@ type Activity {
   id: ID!
   title: String
   description: String
-  image: ImageFieldOutput
+  image: CloudinaryImage_File
   price: Int
   numberOfSlots: Int
   category: Category
@@ -15,21 +15,53 @@ type Activity {
   toDate: DateTime
 }
 
-interface ImageFieldOutput {
-  id: ID!
-  filesize: Int!
-  width: Int!
-  height: Int!
-  extension: ImageExtension!
-  ref: String!
-  url: String!
+type CloudinaryImage_File {
+  id: ID
+  filename: String
+  originalFilename: String
+  mimetype: String
+  encoding: String
+  publicUrl: String
+  publicUrlTransformed(transformation: CloudinaryImageFormat): String
 }
 
-enum ImageExtension {
-  jpg
-  png
-  webp
-  gif
+"""
+Mirrors the formatting options [Cloudinary provides](https://cloudinary.com/documentation/image_transformation_reference).
+All options are strings as they ultimately end up in a URL.
+"""
+input CloudinaryImageFormat {
+  """
+   Rewrites the filename to be this pretty string. Do not include `/` or `.`
+  """
+  prettyName: String
+  width: String
+  height: String
+  crop: String
+  aspect_ratio: String
+  gravity: String
+  zoom: String
+  x: String
+  y: String
+  format: String
+  fetch_format: String
+  quality: String
+  radius: String
+  angle: String
+  effect: String
+  opacity: String
+  border: String
+  background: String
+  overlay: String
+  underlay: String
+  default_image: String
+  delay: String
+  color: String
+  color_space: String
+  dpr: String
+  page: String
+  density: String
+  flags: String
+  transformation: String
 }
 
 scalar DateTime
@@ -148,7 +180,7 @@ enum OrderDirection {
 input ActivityUpdateInput {
   title: String
   description: String
-  image: ImageFieldInput
+  image: Upload
   price: Int
   numberOfSlots: Int
   category: CategoryRelateToOneForUpdateInput
@@ -156,11 +188,6 @@ input ActivityUpdateInput {
   date: DateTime
   fromDate: DateTime
   toDate: DateTime
-}
-
-input ImageFieldInput {
-  upload: Upload
-  ref: String
 }
 
 """
@@ -182,7 +209,7 @@ input ActivityUpdateArgs {
 input ActivityCreateInput {
   title: String
   description: String
-  image: ImageFieldInput
+  image: Upload
   price: Int
   numberOfSlots: Int
   category: CategoryRelateToOneForCreateInput
@@ -201,32 +228,12 @@ type Category {
   id: ID!
   title: String
   description: String
-  image: ImageFieldOutput
+  image: CloudinaryImage_File
 }
 
 input CategoryWhereUniqueInput {
   id: ID
   title: String
-}
-
-type LocalImageFieldOutput implements ImageFieldOutput {
-  id: ID!
-  filesize: Int!
-  width: Int!
-  height: Int!
-  extension: ImageExtension!
-  ref: String!
-  url: String!
-}
-
-type CloudImageFieldOutput implements ImageFieldOutput {
-  id: ID!
-  filesize: Int!
-  width: Int!
-  height: Int!
-  extension: ImageExtension!
-  ref: String!
-  url: String!
 }
 
 input CategoryWhereInput {
@@ -247,7 +254,7 @@ input CategoryOrderByInput {
 input CategoryUpdateInput {
   title: String
   description: String
-  image: ImageFieldInput
+  image: Upload
 }
 
 input CategoryUpdateArgs {
@@ -258,7 +265,7 @@ input CategoryUpdateArgs {
 input CategoryCreateInput {
   title: String
   description: String
-  image: ImageFieldInput
+  image: Upload
 }
 
 type Member {
@@ -267,55 +274,6 @@ type Member {
   lastName: String
   image: CloudinaryImage_File
   origin: String
-}
-
-type CloudinaryImage_File {
-  id: ID
-  filename: String
-  originalFilename: String
-  mimetype: String
-  encoding: String
-  publicUrl: String
-  publicUrlTransformed(transformation: CloudinaryImageFormat): String
-}
-
-"""
-Mirrors the formatting options [Cloudinary provides](https://cloudinary.com/documentation/image_transformation_reference).
-All options are strings as they ultimately end up in a URL.
-"""
-input CloudinaryImageFormat {
-  """
-   Rewrites the filename to be this pretty string. Do not include `/` or `.`
-  """
-  prettyName: String
-  width: String
-  height: String
-  crop: String
-  aspect_ratio: String
-  gravity: String
-  zoom: String
-  x: String
-  y: String
-  format: String
-  fetch_format: String
-  quality: String
-  radius: String
-  angle: String
-  effect: String
-  opacity: String
-  border: String
-  background: String
-  overlay: String
-  underlay: String
-  default_image: String
-  delay: String
-  color: String
-  color_space: String
-  dpr: String
-  page: String
-  density: String
-  flags: String
-  transformation: String
 }
 
 input MemberWhereUniqueInput {
