@@ -12,9 +12,5 @@ export const CategorySchema = list({
       validation: { isRequired: true },
     }),
     image: image(),
-    // activity: relationship({
-    //   ref: 'Activity',
-    //   many: false,
-    // }),
   },
 });
