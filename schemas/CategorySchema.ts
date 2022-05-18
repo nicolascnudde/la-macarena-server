@@ -1,5 +1,6 @@
+import 'dotenv/config';
 import { list } from '@keystone-6/core';
-import { image, relationship, text } from '@keystone-6/core/fields';
+import { text } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
 
 export const cloudinary = {
