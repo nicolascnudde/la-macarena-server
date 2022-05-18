@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { list } from '@keystone-6/core';
-import { image, text } from '@keystone-6/core/fields';
+import { text, timestamp } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
 
 export const cloudinary = {
@@ -17,6 +17,7 @@ export const MemberSchema = list({
     image: cloudinaryImage({
       cloudinary,
     }),
+    birthday: timestamp(),
     origin: text({ validation: { isRequired: true } }),
   },
 });
