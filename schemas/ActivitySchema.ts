@@ -1,7 +1,7 @@
+import 'dotenv/config';
 import { list } from '@keystone-6/core';
 import {
   integer,
-  image,
   relationship,
   text,
   timestamp,
