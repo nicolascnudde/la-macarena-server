@@ -19,6 +19,13 @@ export const ActivitySchema = list({
         max: 5000,
       },
     }),
+    numberOfSlots: integer({
+      validation: {
+        isRequired: true,
+        min: 1,
+        max: 30,
+      }
+    }),
     category: relationship({
       ref: 'Category',
       many: false,
