@@ -273,6 +273,7 @@ type Member {
   firstName: String
   lastName: String
   image: CloudinaryImage_File
+  birthday: DateTime
   origin: String
 }
 
@@ -287,6 +288,7 @@ input MemberWhereInput {
   id: IDFilter
   firstName: StringFilter
   lastName: StringFilter
+  birthday: DateTimeNullableFilter
   origin: StringFilter
 }
 
@@ -294,6 +296,7 @@ input MemberOrderByInput {
   id: OrderDirection
   firstName: OrderDirection
   lastName: OrderDirection
+  birthday: OrderDirection
   origin: OrderDirection
 }
 
@@ -301,6 +304,7 @@ input MemberUpdateInput {
   firstName: String
   lastName: String
   image: Upload
+  birthday: DateTime
   origin: String
 }
 
@@ -313,6 +317,7 @@ input MemberCreateInput {
   firstName: String
   lastName: String
   image: Upload
+  birthday: DateTime
   origin: String
 }
 

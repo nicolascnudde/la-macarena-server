@@ -37,11 +37,12 @@ model Category {
 }
 
 model Member {
-  id        String @id @default(uuid()) @postgresql.Uuid
-  firstName String @default("")
-  lastName  String @default("")
+  id        String    @id @default(uuid()) @postgresql.Uuid
+  firstName String    @default("")
+  lastName  String    @default("")
   image     Json?
-  origin    String @default("")
+  birthday  DateTime?
+  origin    String    @default("")
 }
 
 model User {
