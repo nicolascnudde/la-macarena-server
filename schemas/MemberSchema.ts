@@ -20,4 +20,9 @@ export const MemberSchema = list({
     birthday: timestamp(),
     origin: text({ validation: { isRequired: true } }),
   },
+  ui: {
+    listView: {
+      initialColumns: ['firstName', 'lastName', 'image', 'birthday', 'origin'],
+    },
+  },
 });
