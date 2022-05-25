@@ -18,20 +18,33 @@ export default withAuth(
   // Using the config function helps typescript guide you to the available options.
   config({
     graphql: {
+      playground: true,
+      // path: "/api/graphql",
+      // apolloConfig: {
+      //   debug: true,
+      // }
       apolloConfig: {
         introspection: true,
       },
     },
-    // server: {
+    server: {
       // port: 3001,
-      // cors: {
-      //   credentials: true,
-      // }
-    // },
+      cors: {
+        credentials: true,
+      },
+      healthCheck: {
+        path: "/my-health-check",
+        data: () => ({
+          status: "healthy",
+          timestamp: Date.now(),
+          uptime: process.uptime(),
+        }),
+      },
+    },
     // the db sets the database provider - we're using sqlite for the fastest startup experience
     db: {
       provider: 'postgresql',
-      url: process.env.DATABASE_URL ?? 'postgres://nicolas@localhost:5432/la-macarena-keystone-db',
+      url: process.env.DATABASE_URL ?? 'postgres://localhost:5432/la-macarena-keystone-db',
       idField: { kind: 'uuid' },
     },
     // This config allows us to set up features of the Admin UI https://keystonejs.com/docs/apis/config#ui
