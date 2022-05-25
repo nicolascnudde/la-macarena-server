@@ -5,7 +5,6 @@ It looks at the default export, and expects a Keystone config object.
 
 You can find all the config options in our docs here: https://keystonejs.com/docs/apis/config
 */
-
 import { config } from '@keystone-6/core';
 
 // Look in the schema file for how we define our lists, and how users interact with them through graphql or the Admin UI
@@ -17,35 +16,31 @@ import { withAuth, session } from './auth';
 export default withAuth(
   // Using the config function helps typescript guide you to the available options.
   config({
-    graphql: {
-      playground: true,
-      // path: "/api/graphql",
-      // apolloConfig: {
-      //   debug: true,
-      // }
-      apolloConfig: {
-        introspection: true,
-      },
-    },
     server: {
-      // port: 3001,
       cors: {
         credentials: true,
       },
       healthCheck: {
-        path: "/my-health-check",
+        path: '/my-health-check',
         data: () => ({
-          status: "healthy",
+          status: 'healthy',
           timestamp: Date.now(),
           uptime: process.uptime(),
         }),
       },
     },
-    // the db sets the database provider - we're using sqlite for the fastest startup experience
     db: {
       provider: 'postgresql',
-      url: process.env.DATABASE_URL ?? 'postgres://localhost:5432/la-macarena-keystone-db',
+      url:
+        process.env.DATABASE_URL ??
+        'postgres://localhost:5432/la-macarena-keystone-db',
       idField: { kind: 'uuid' },
+    },
+    graphql: {
+      playground: true,
+      apolloConfig: {
+        introspection: true,
+      },
     },
     // This config allows us to set up features of the Admin UI https://keystonejs.com/docs/apis/config#ui
     ui: {
