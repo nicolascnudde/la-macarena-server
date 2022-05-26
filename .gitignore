@@ -11,3 +11,4 @@ keystone.db
 
 # MacOS
 .DS_Store
+.vercel
