@@ -7,7 +7,7 @@ keystone.db
 *.log
 
 # environmental variables
-.env
+.env*
 
 # MacOS
 .DS_Store

@@ -17,6 +17,7 @@ export default withAuth(
   // Using the config function helps typescript guide you to the available options.
   config({
     server: {
+      port: 10000,
       cors: {
         credentials: true,
       },
