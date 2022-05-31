@@ -84,3 +84,10 @@ model User {
   email    String @unique @default("")
   password String
 }
+
+model USP {
+  id          String @id @default(uuid()) @postgresql.Uuid
+  title       String @unique @default("")
+  description String @default("")
+  image       Json?
+}

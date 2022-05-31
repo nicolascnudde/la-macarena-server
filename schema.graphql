@@ -554,6 +554,50 @@ input UserCreateInput {
   password: String
 }
 
+type USP {
+  id: ID!
+  title: String
+  description: String
+  image: CloudinaryImage_File
+}
+
+input USPWhereUniqueInput {
+  id: ID
+  title: String
+}
+
+input USPWhereInput {
+  AND: [USPWhereInput!]
+  OR: [USPWhereInput!]
+  NOT: [USPWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input USPOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  description: OrderDirection
+}
+
+input USPUpdateInput {
+  title: String
+  description: String
+  image: Upload
+}
+
+input USPUpdateArgs {
+  where: USPWhereUniqueInput!
+  data: USPUpdateInput!
+}
+
+input USPCreateInput {
+  title: String
+  description: String
+  image: Upload
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -608,6 +652,12 @@ type Mutation {
   updateUsers(data: [UserUpdateArgs!]!): [User]
   deleteUser(where: UserWhereUniqueInput!): User
   deleteUsers(where: [UserWhereUniqueInput!]!): [User]
+  createUSP(data: USPCreateInput!): USP
+  createUSPS(data: [USPCreateInput!]!): [USP]
+  updateUSP(where: USPWhereUniqueInput!, data: USPUpdateInput!): USP
+  updateUSPS(data: [USPUpdateArgs!]!): [USP]
+  deleteUSP(where: USPWhereUniqueInput!): USP
+  deleteUSPS(where: [USPWhereUniqueInput!]!): [USP]
   endSession: Boolean!
   authenticateUserWithPassword(
     email: String!
@@ -686,6 +736,14 @@ type Query {
   ): [User!]
   user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
+  uSPS(
+    where: USPWhereInput! = {}
+    orderBy: [USPOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [USP!]
+  uSP(where: USPWhereUniqueInput!): USP
+  uSPSCount(where: USPWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

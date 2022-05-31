@@ -19,6 +19,7 @@ import { FAQSchema } from './schemas/FAQSchema';
 import { CategorySchema } from './schemas/CategorySchema';
 import { MemberSchema } from './schemas/MemberSchema';
 import { UserSchema } from './schemas/UserSchema';
+import { USPSchema } from './schemas/USPSchema';
 
 export const lists: Lists = {
   Activity: ActivitySchema,
@@ -27,4 +28,5 @@ export const lists: Lists = {
   Category: CategorySchema,
   Member: MemberSchema,
   User: UserSchema,
+  USP: USPSchema,
 };
