@@ -28,6 +28,12 @@ model Activity {
   @@index([categoryId])
 }
 
+model FAQ {
+  id       String @id @default(uuid()) @postgresql.Uuid
+  question String @unique @default("")
+  answer   String @default("")
+}
+
 model Category {
   id                     String     @id @default(uuid()) @postgresql.Uuid
   title                  String     @unique @default("")

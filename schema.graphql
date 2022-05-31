@@ -224,6 +224,47 @@ input CategoryRelateToOneForCreateInput {
   connect: CategoryWhereUniqueInput
 }
 
+type FAQ {
+  id: ID!
+  question: String
+  answer: String
+}
+
+input FAQWhereUniqueInput {
+  id: ID
+  question: String
+}
+
+input FAQWhereInput {
+  AND: [FAQWhereInput!]
+  OR: [FAQWhereInput!]
+  NOT: [FAQWhereInput!]
+  id: IDFilter
+  question: StringFilter
+  answer: StringFilter
+}
+
+input FAQOrderByInput {
+  id: OrderDirection
+  question: OrderDirection
+  answer: OrderDirection
+}
+
+input FAQUpdateInput {
+  question: String
+  answer: String
+}
+
+input FAQUpdateArgs {
+  where: FAQWhereUniqueInput!
+  data: FAQUpdateInput!
+}
+
+input FAQCreateInput {
+  question: String
+  answer: String
+}
+
 type Category {
   id: ID!
   title: String
@@ -387,6 +428,12 @@ type Mutation {
   updateActivities(data: [ActivityUpdateArgs!]!): [Activity]
   deleteActivity(where: ActivityWhereUniqueInput!): Activity
   deleteActivities(where: [ActivityWhereUniqueInput!]!): [Activity]
+  createFAQ(data: FAQCreateInput!): FAQ
+  createFAQS(data: [FAQCreateInput!]!): [FAQ]
+  updateFAQ(where: FAQWhereUniqueInput!, data: FAQUpdateInput!): FAQ
+  updateFAQS(data: [FAQUpdateArgs!]!): [FAQ]
+  deleteFAQ(where: FAQWhereUniqueInput!): FAQ
+  deleteFAQS(where: [FAQWhereUniqueInput!]!): [FAQ]
   createCategory(data: CategoryCreateInput!): Category
   createCategories(data: [CategoryCreateInput!]!): [Category]
   updateCategory(
@@ -446,6 +493,14 @@ type Query {
   ): [Activity!]
   activity(where: ActivityWhereUniqueInput!): Activity
   activitiesCount(where: ActivityWhereInput! = {}): Int
+  fAQS(
+    where: FAQWhereInput! = {}
+    orderBy: [FAQOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [FAQ!]
+  fAQ(where: FAQWhereUniqueInput!): FAQ
+  fAQSCount(where: FAQWhereInput! = {}): Int
   categories(
     where: CategoryWhereInput! = {}
     orderBy: [CategoryOrderByInput!]! = []
