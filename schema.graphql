@@ -224,6 +224,150 @@ input CategoryRelateToOneForCreateInput {
   connect: CategoryWhereUniqueInput
 }
 
+type Content {
+  id: ID!
+  homePageHeroTitle: String
+  homePageHeroDescription: String
+  homePageHeroImage: CloudinaryImage_File
+  homePageAboutTitle: String
+  homePageAboutDescription: String
+  activitiesPageHeroTitle: String
+  activitiesPageHeroDescription: String
+  activitiesPageUpcomingDescription: String
+  activitiesPageCategoriesDescription: String
+  aboutPageHeroTitle: String
+  aboutPageHeroDescription: String
+  aboutPageHeroImage: CloudinaryImage_File
+  aboutPageStoryTitle: String
+  aboutPageStoryDescription: String
+  goalsPageHeroTitle: String
+  goalsPageHeroDescription: String
+  contactPageHeroTitle: String
+  contactPageHeroDescription: String
+  whoWeAreTitle: String
+  whoWeAreDescription: String
+  ctaTitle: String
+  ctaDescription: String
+  ctaImage: CloudinaryImage_File
+}
+
+input ContentWhereUniqueInput {
+  id: ID
+  homePageHeroTitle: String
+  activitiesPageHeroTitle: String
+  aboutPageHeroTitle: String
+  goalsPageHeroTitle: String
+  contactPageHeroTitle: String
+}
+
+input ContentWhereInput {
+  AND: [ContentWhereInput!]
+  OR: [ContentWhereInput!]
+  NOT: [ContentWhereInput!]
+  id: IDFilter
+  homePageHeroTitle: StringFilter
+  homePageHeroDescription: StringFilter
+  homePageAboutTitle: StringFilter
+  homePageAboutDescription: StringFilter
+  activitiesPageHeroTitle: StringFilter
+  activitiesPageHeroDescription: StringFilter
+  activitiesPageUpcomingDescription: StringFilter
+  activitiesPageCategoriesDescription: StringFilter
+  aboutPageHeroTitle: StringFilter
+  aboutPageHeroDescription: StringFilter
+  aboutPageStoryTitle: StringFilter
+  aboutPageStoryDescription: StringFilter
+  goalsPageHeroTitle: StringFilter
+  goalsPageHeroDescription: StringFilter
+  contactPageHeroTitle: StringFilter
+  contactPageHeroDescription: StringFilter
+  whoWeAreTitle: StringFilter
+  whoWeAreDescription: StringFilter
+  ctaTitle: StringFilter
+  ctaDescription: StringFilter
+}
+
+input ContentOrderByInput {
+  id: OrderDirection
+  homePageHeroTitle: OrderDirection
+  homePageHeroDescription: OrderDirection
+  homePageAboutTitle: OrderDirection
+  homePageAboutDescription: OrderDirection
+  activitiesPageHeroTitle: OrderDirection
+  activitiesPageHeroDescription: OrderDirection
+  activitiesPageUpcomingDescription: OrderDirection
+  activitiesPageCategoriesDescription: OrderDirection
+  aboutPageHeroTitle: OrderDirection
+  aboutPageHeroDescription: OrderDirection
+  aboutPageStoryTitle: OrderDirection
+  aboutPageStoryDescription: OrderDirection
+  goalsPageHeroTitle: OrderDirection
+  goalsPageHeroDescription: OrderDirection
+  contactPageHeroTitle: OrderDirection
+  contactPageHeroDescription: OrderDirection
+  whoWeAreTitle: OrderDirection
+  whoWeAreDescription: OrderDirection
+  ctaTitle: OrderDirection
+  ctaDescription: OrderDirection
+}
+
+input ContentUpdateInput {
+  homePageHeroTitle: String
+  homePageHeroDescription: String
+  homePageHeroImage: Upload
+  homePageAboutTitle: String
+  homePageAboutDescription: String
+  activitiesPageHeroTitle: String
+  activitiesPageHeroDescription: String
+  activitiesPageUpcomingDescription: String
+  activitiesPageCategoriesDescription: String
+  aboutPageHeroTitle: String
+  aboutPageHeroDescription: String
+  aboutPageHeroImage: Upload
+  aboutPageStoryTitle: String
+  aboutPageStoryDescription: String
+  goalsPageHeroTitle: String
+  goalsPageHeroDescription: String
+  contactPageHeroTitle: String
+  contactPageHeroDescription: String
+  whoWeAreTitle: String
+  whoWeAreDescription: String
+  ctaTitle: String
+  ctaDescription: String
+  ctaImage: Upload
+}
+
+input ContentUpdateArgs {
+  where: ContentWhereUniqueInput!
+  data: ContentUpdateInput!
+}
+
+input ContentCreateInput {
+  homePageHeroTitle: String
+  homePageHeroDescription: String
+  homePageHeroImage: Upload
+  homePageAboutTitle: String
+  homePageAboutDescription: String
+  activitiesPageHeroTitle: String
+  activitiesPageHeroDescription: String
+  activitiesPageUpcomingDescription: String
+  activitiesPageCategoriesDescription: String
+  aboutPageHeroTitle: String
+  aboutPageHeroDescription: String
+  aboutPageHeroImage: Upload
+  aboutPageStoryTitle: String
+  aboutPageStoryDescription: String
+  goalsPageHeroTitle: String
+  goalsPageHeroDescription: String
+  contactPageHeroTitle: String
+  contactPageHeroDescription: String
+  whoWeAreTitle: String
+  whoWeAreDescription: String
+  ctaTitle: String
+  ctaDescription: String
+  ctaImage: Upload
+}
+
 type FAQ {
   id: ID!
   question: String
@@ -428,6 +572,15 @@ type Mutation {
   updateActivities(data: [ActivityUpdateArgs!]!): [Activity]
   deleteActivity(where: ActivityWhereUniqueInput!): Activity
   deleteActivities(where: [ActivityWhereUniqueInput!]!): [Activity]
+  createContent(data: ContentCreateInput!): Content
+  createContents(data: [ContentCreateInput!]!): [Content]
+  updateContent(
+    where: ContentWhereUniqueInput!
+    data: ContentUpdateInput!
+  ): Content
+  updateContents(data: [ContentUpdateArgs!]!): [Content]
+  deleteContent(where: ContentWhereUniqueInput!): Content
+  deleteContents(where: [ContentWhereUniqueInput!]!): [Content]
   createFAQ(data: FAQCreateInput!): FAQ
   createFAQS(data: [FAQCreateInput!]!): [FAQ]
   updateFAQ(where: FAQWhereUniqueInput!, data: FAQUpdateInput!): FAQ
@@ -493,6 +646,14 @@ type Query {
   ): [Activity!]
   activity(where: ActivityWhereUniqueInput!): Activity
   activitiesCount(where: ActivityWhereInput! = {}): Int
+  contents(
+    where: ContentWhereInput! = {}
+    orderBy: [ContentOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Content!]
+  content(where: ContentWhereUniqueInput!): Content
+  contentsCount(where: ContentWhereInput! = {}): Int
   fAQS(
     where: FAQWhereInput! = {}
     orderBy: [FAQOrderByInput!]! = []

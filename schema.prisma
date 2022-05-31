@@ -28,6 +28,33 @@ model Activity {
   @@index([categoryId])
 }
 
+model Content {
+  id                                  String @id @default(uuid()) @postgresql.Uuid
+  homePageHeroTitle                   String @unique @default("")
+  homePageHeroDescription             String @default("")
+  homePageHeroImage                   Json?
+  homePageAboutTitle                  String @default("")
+  homePageAboutDescription            String @default("")
+  activitiesPageHeroTitle             String @unique @default("")
+  activitiesPageHeroDescription       String @default("")
+  activitiesPageUpcomingDescription   String @default("")
+  activitiesPageCategoriesDescription String @default("")
+  aboutPageHeroTitle                  String @unique @default("")
+  aboutPageHeroDescription            String @default("")
+  aboutPageHeroImage                  Json?
+  aboutPageStoryTitle                 String @default("")
+  aboutPageStoryDescription           String @default("")
+  goalsPageHeroTitle                  String @unique @default("")
+  goalsPageHeroDescription            String @default("")
+  contactPageHeroTitle                String @unique @default("")
+  contactPageHeroDescription          String @default("")
+  whoWeAreTitle                       String @default("")
+  whoWeAreDescription                 String @default("")
+  ctaTitle                            String @default("")
+  ctaDescription                      String @default("")
+  ctaImage                            Json?
+}
+
 model FAQ {
   id       String @id @default(uuid()) @postgresql.Uuid
   question String @unique @default("")
