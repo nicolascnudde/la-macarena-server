@@ -15,18 +15,18 @@ import { Lists } from '.keystone/types';
 
 import { ActivitySchema } from './schemas/ActivitySchema';
 import { ContentSchema } from './schemas/ContentSchema';
-import { FAQSchema } from './schemas/FAQSchema';
+import { FaqSchema } from './schemas/FaqSchema';
 import { CategorySchema } from './schemas/CategorySchema';
 import { MemberSchema } from './schemas/MemberSchema';
 import { UserSchema } from './schemas/UserSchema';
-import { USPSchema } from './schemas/USPSchema';
+import { UspSchema } from './schemas/UspSchema';
 
 export const lists: Lists = {
   Activity: ActivitySchema,
   Content: ContentSchema,
-  FAQ: FAQSchema,
+  Faq: FaqSchema,
   Category: CategorySchema,
   Member: MemberSchema,
   User: UserSchema,
-  USP: USPSchema,
+  USP: UspSchema,
 };

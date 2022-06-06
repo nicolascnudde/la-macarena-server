@@ -30,6 +30,8 @@ model Activity {
 
 model Content {
   id                                  String @id @default(uuid()) @postgresql.Uuid
+  socialMediaInstagram                String @default("")
+  socialMediaFacebook                 String @default("")
   homePageHeroTitle                   String @unique @default("")
   homePageHeroDescription             String @default("")
   homePageHeroImage                   Json?
@@ -55,7 +57,7 @@ model Content {
   ctaImage                            Json?
 }
 
-model FAQ {
+model Faq {
   id       String @id @default(uuid()) @postgresql.Uuid
   question String @unique @default("")
   answer   String @default("")

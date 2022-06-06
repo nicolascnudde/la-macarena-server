@@ -10,7 +10,7 @@ export const cloudinary = {
   folder: 'usps',
 };
 
-export const USPSchema = list({
+export const UspSchema = list({
   fields: {
     title: text({
       isIndexed: 'unique',

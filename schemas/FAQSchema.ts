@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { list } from '@keystone-6/core';
 import { text } from '@keystone-6/core/fields';
 
-export const FAQSchema = list({
+export const FaqSchema = list({
   fields: {
     question: text({
       isIndexed: 'unique',

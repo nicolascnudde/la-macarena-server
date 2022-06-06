@@ -226,6 +226,8 @@ input CategoryRelateToOneForCreateInput {
 
 type Content {
   id: ID!
+  socialMediaInstagram: String
+  socialMediaFacebook: String
   homePageHeroTitle: String
   homePageHeroDescription: String
   homePageHeroImage: CloudinaryImage_File
@@ -265,6 +267,8 @@ input ContentWhereInput {
   OR: [ContentWhereInput!]
   NOT: [ContentWhereInput!]
   id: IDFilter
+  socialMediaInstagram: StringFilter
+  socialMediaFacebook: StringFilter
   homePageHeroTitle: StringFilter
   homePageHeroDescription: StringFilter
   homePageAboutTitle: StringFilter
@@ -289,6 +293,8 @@ input ContentWhereInput {
 
 input ContentOrderByInput {
   id: OrderDirection
+  socialMediaInstagram: OrderDirection
+  socialMediaFacebook: OrderDirection
   homePageHeroTitle: OrderDirection
   homePageHeroDescription: OrderDirection
   homePageAboutTitle: OrderDirection
@@ -312,6 +318,8 @@ input ContentOrderByInput {
 }
 
 input ContentUpdateInput {
+  socialMediaInstagram: String
+  socialMediaFacebook: String
   homePageHeroTitle: String
   homePageHeroDescription: String
   homePageHeroImage: Upload
@@ -343,6 +351,8 @@ input ContentUpdateArgs {
 }
 
 input ContentCreateInput {
+  socialMediaInstagram: String
+  socialMediaFacebook: String
   homePageHeroTitle: String
   homePageHeroDescription: String
   homePageHeroImage: Upload
@@ -368,43 +378,43 @@ input ContentCreateInput {
   ctaImage: Upload
 }
 
-type FAQ {
+type Faq {
   id: ID!
   question: String
   answer: String
 }
 
-input FAQWhereUniqueInput {
+input FaqWhereUniqueInput {
   id: ID
   question: String
 }
 
-input FAQWhereInput {
-  AND: [FAQWhereInput!]
-  OR: [FAQWhereInput!]
-  NOT: [FAQWhereInput!]
+input FaqWhereInput {
+  AND: [FaqWhereInput!]
+  OR: [FaqWhereInput!]
+  NOT: [FaqWhereInput!]
   id: IDFilter
   question: StringFilter
   answer: StringFilter
 }
 
-input FAQOrderByInput {
+input FaqOrderByInput {
   id: OrderDirection
   question: OrderDirection
   answer: OrderDirection
 }
 
-input FAQUpdateInput {
+input FaqUpdateInput {
   question: String
   answer: String
 }
 
-input FAQUpdateArgs {
-  where: FAQWhereUniqueInput!
-  data: FAQUpdateInput!
+input FaqUpdateArgs {
+  where: FaqWhereUniqueInput!
+  data: FaqUpdateInput!
 }
 
-input FAQCreateInput {
+input FaqCreateInput {
   question: String
   answer: String
 }
@@ -625,12 +635,12 @@ type Mutation {
   updateContents(data: [ContentUpdateArgs!]!): [Content]
   deleteContent(where: ContentWhereUniqueInput!): Content
   deleteContents(where: [ContentWhereUniqueInput!]!): [Content]
-  createFAQ(data: FAQCreateInput!): FAQ
-  createFAQS(data: [FAQCreateInput!]!): [FAQ]
-  updateFAQ(where: FAQWhereUniqueInput!, data: FAQUpdateInput!): FAQ
-  updateFAQS(data: [FAQUpdateArgs!]!): [FAQ]
-  deleteFAQ(where: FAQWhereUniqueInput!): FAQ
-  deleteFAQS(where: [FAQWhereUniqueInput!]!): [FAQ]
+  createFaq(data: FaqCreateInput!): Faq
+  createFaqs(data: [FaqCreateInput!]!): [Faq]
+  updateFaq(where: FaqWhereUniqueInput!, data: FaqUpdateInput!): Faq
+  updateFaqs(data: [FaqUpdateArgs!]!): [Faq]
+  deleteFaq(where: FaqWhereUniqueInput!): Faq
+  deleteFaqs(where: [FaqWhereUniqueInput!]!): [Faq]
   createCategory(data: CategoryCreateInput!): Category
   createCategories(data: [CategoryCreateInput!]!): [Category]
   updateCategory(
@@ -704,14 +714,14 @@ type Query {
   ): [Content!]
   content(where: ContentWhereUniqueInput!): Content
   contentsCount(where: ContentWhereInput! = {}): Int
-  fAQS(
-    where: FAQWhereInput! = {}
-    orderBy: [FAQOrderByInput!]! = []
+  faqs(
+    where: FaqWhereInput! = {}
+    orderBy: [FaqOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-  ): [FAQ!]
-  fAQ(where: FAQWhereUniqueInput!): FAQ
-  fAQSCount(where: FAQWhereInput! = {}): Int
+  ): [Faq!]
+  faq(where: FaqWhereUniqueInput!): Faq
+  faqsCount(where: FaqWhereInput! = {}): Int
   categories(
     where: CategoryWhereInput! = {}
     orderBy: [CategoryOrderByInput!]! = []
