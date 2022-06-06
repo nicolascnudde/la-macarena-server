@@ -28,5 +28,5 @@ export const lists: Lists = {
   Category: CategorySchema,
   Member: MemberSchema,
   User: UserSchema,
-  USP: UspSchema,
+  Usp: UspSchema,
 };
