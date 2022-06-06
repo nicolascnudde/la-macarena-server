@@ -16,6 +16,17 @@ export const cloudinary = {
 export const ContentSchema = list({
   fields: {
     /**
+     * Social media
+     */
+    socialMediaInstagram: text({
+      label: 'Social media: Instagram',
+      validation: { isRequired: true },
+    }),
+    socialMediaFacebook: text({
+      label: 'Social media: Facebook',
+      validation: { isRequired: true },
+    }),
+    /**
      * Home page content
      */
     // The hero section
