@@ -12,14 +12,14 @@ generator client {
 }
 
 model Activity {
-  id            String    @id @default(uuid()) @postgresql.Uuid
+  id            Int       @id @default(autoincrement())
   title         String    @unique @default("")
   description   String    @default("")
   image         Json?
   price         Int
   numberOfSlots Int
   category      Category? @relation("Activity_category", fields: [categoryId], references: [id])
-  categoryId    String?   @map("category") @postgresql.Uuid
+  categoryId    Int?      @map("category")
   multipleDays  Boolean   @default(false)
   date          DateTime?
   fromDate      DateTime?
@@ -29,7 +29,7 @@ model Activity {
 }
 
 model Content {
-  id                                  String @id @default(uuid()) @postgresql.Uuid
+  id                                  Int    @id @default(autoincrement())
   socialMediaInstagram                String @default("")
   socialMediaFacebook                 String @default("")
   homePageHeroTitle                   String @unique @default("")
@@ -58,13 +58,13 @@ model Content {
 }
 
 model Faq {
-  id       String @id @default(uuid()) @postgresql.Uuid
+  id       Int    @id @default(autoincrement())
   question String @unique @default("")
   answer   String @default("")
 }
 
 model Category {
-  id                     String     @id @default(uuid()) @postgresql.Uuid
+  id                     Int        @id @default(autoincrement())
   title                  String     @unique @default("")
   description            String     @default("")
   image                  Json?
@@ -72,7 +72,7 @@ model Category {
 }
 
 model Member {
-  id        String    @id @default(uuid()) @postgresql.Uuid
+  id        Int       @id @default(autoincrement())
   firstName String    @default("")
   lastName  String    @default("")
   image     Json?
@@ -81,14 +81,14 @@ model Member {
 }
 
 model User {
-  id       String @id @default(uuid()) @postgresql.Uuid
+  id       Int    @id @default(autoincrement())
   name     String @default("")
   email    String @unique @default("")
   password String
 }
 
 model Usp {
-  id          String @id @default(uuid()) @postgresql.Uuid
+  id          Int    @id @default(autoincrement())
   title       String @unique @default("")
   description String @default("")
   image       Json?

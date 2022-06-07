@@ -35,7 +35,7 @@ export default withAuth(
       url:
         process.env.DATABASE_URL ??
         'postgres://localhost:5432/la-macarena-keystone-db',
-      idField: { kind: 'uuid' },
+      idField: { kind: 'autoincrement' },
     },
     graphql: {
       playground: true,
