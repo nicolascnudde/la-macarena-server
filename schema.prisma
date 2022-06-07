@@ -28,6 +28,14 @@ model Activity {
   @@index([categoryId])
 }
 
+model Category {
+  id                     Int        @id @default(autoincrement())
+  title                  String     @unique @default("")
+  description            String     @default("")
+  image                  Json?
+  from_Activity_category Activity[] @relation("Activity_category")
+}
+
 model Content {
   id                                  Int    @id @default(autoincrement())
   socialMediaInstagram                String @default("")
@@ -63,12 +71,11 @@ model Faq {
   answer   String @default("")
 }
 
-model Category {
-  id                     Int        @id @default(autoincrement())
-  title                  String     @unique @default("")
-  description            String     @default("")
-  image                  Json?
-  from_Activity_category Activity[] @relation("Activity_category")
+model Goal {
+  id          Int    @id @default(autoincrement())
+  title       String @unique @default("")
+  description String @default("")
+  image       Json?
 }
 
 model Member {

@@ -224,6 +224,50 @@ input CategoryRelateToOneForCreateInput {
   connect: CategoryWhereUniqueInput
 }
 
+type Category {
+  id: ID!
+  title: String
+  description: String
+  image: CloudinaryImage_File
+}
+
+input CategoryWhereUniqueInput {
+  id: ID
+  title: String
+}
+
+input CategoryWhereInput {
+  AND: [CategoryWhereInput!]
+  OR: [CategoryWhereInput!]
+  NOT: [CategoryWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  description: StringFilter
+}
+
+input CategoryOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  description: OrderDirection
+}
+
+input CategoryUpdateInput {
+  title: String
+  description: String
+  image: Upload
+}
+
+input CategoryUpdateArgs {
+  where: CategoryWhereUniqueInput!
+  data: CategoryUpdateInput!
+}
+
+input CategoryCreateInput {
+  title: String
+  description: String
+  image: Upload
+}
+
 type Content {
   id: ID!
   socialMediaInstagram: String
@@ -419,45 +463,45 @@ input FaqCreateInput {
   answer: String
 }
 
-type Category {
+type Goal {
   id: ID!
   title: String
   description: String
   image: CloudinaryImage_File
 }
 
-input CategoryWhereUniqueInput {
+input GoalWhereUniqueInput {
   id: ID
   title: String
 }
 
-input CategoryWhereInput {
-  AND: [CategoryWhereInput!]
-  OR: [CategoryWhereInput!]
-  NOT: [CategoryWhereInput!]
+input GoalWhereInput {
+  AND: [GoalWhereInput!]
+  OR: [GoalWhereInput!]
+  NOT: [GoalWhereInput!]
   id: IDFilter
   title: StringFilter
   description: StringFilter
 }
 
-input CategoryOrderByInput {
+input GoalOrderByInput {
   id: OrderDirection
   title: OrderDirection
   description: OrderDirection
 }
 
-input CategoryUpdateInput {
+input GoalUpdateInput {
   title: String
   description: String
   image: Upload
 }
 
-input CategoryUpdateArgs {
-  where: CategoryWhereUniqueInput!
-  data: CategoryUpdateInput!
+input GoalUpdateArgs {
+  where: GoalWhereUniqueInput!
+  data: GoalUpdateInput!
 }
 
-input CategoryCreateInput {
+input GoalCreateInput {
   title: String
   description: String
   image: Upload
@@ -626,6 +670,15 @@ type Mutation {
   updateActivities(data: [ActivityUpdateArgs!]!): [Activity]
   deleteActivity(where: ActivityWhereUniqueInput!): Activity
   deleteActivities(where: [ActivityWhereUniqueInput!]!): [Activity]
+  createCategory(data: CategoryCreateInput!): Category
+  createCategories(data: [CategoryCreateInput!]!): [Category]
+  updateCategory(
+    where: CategoryWhereUniqueInput!
+    data: CategoryUpdateInput!
+  ): Category
+  updateCategories(data: [CategoryUpdateArgs!]!): [Category]
+  deleteCategory(where: CategoryWhereUniqueInput!): Category
+  deleteCategories(where: [CategoryWhereUniqueInput!]!): [Category]
   createContent(data: ContentCreateInput!): Content
   createContents(data: [ContentCreateInput!]!): [Content]
   updateContent(
@@ -641,15 +694,12 @@ type Mutation {
   updateFaqs(data: [FaqUpdateArgs!]!): [Faq]
   deleteFaq(where: FaqWhereUniqueInput!): Faq
   deleteFaqs(where: [FaqWhereUniqueInput!]!): [Faq]
-  createCategory(data: CategoryCreateInput!): Category
-  createCategories(data: [CategoryCreateInput!]!): [Category]
-  updateCategory(
-    where: CategoryWhereUniqueInput!
-    data: CategoryUpdateInput!
-  ): Category
-  updateCategories(data: [CategoryUpdateArgs!]!): [Category]
-  deleteCategory(where: CategoryWhereUniqueInput!): Category
-  deleteCategories(where: [CategoryWhereUniqueInput!]!): [Category]
+  createGoal(data: GoalCreateInput!): Goal
+  createGoals(data: [GoalCreateInput!]!): [Goal]
+  updateGoal(where: GoalWhereUniqueInput!, data: GoalUpdateInput!): Goal
+  updateGoals(data: [GoalUpdateArgs!]!): [Goal]
+  deleteGoal(where: GoalWhereUniqueInput!): Goal
+  deleteGoals(where: [GoalWhereUniqueInput!]!): [Goal]
   createMember(data: MemberCreateInput!): Member
   createMembers(data: [MemberCreateInput!]!): [Member]
   updateMember(where: MemberWhereUniqueInput!, data: MemberUpdateInput!): Member
@@ -706,6 +756,14 @@ type Query {
   ): [Activity!]
   activity(where: ActivityWhereUniqueInput!): Activity
   activitiesCount(where: ActivityWhereInput! = {}): Int
+  categories(
+    where: CategoryWhereInput! = {}
+    orderBy: [CategoryOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Category!]
+  category(where: CategoryWhereUniqueInput!): Category
+  categoriesCount(where: CategoryWhereInput! = {}): Int
   contents(
     where: ContentWhereInput! = {}
     orderBy: [ContentOrderByInput!]! = []
@@ -722,14 +780,14 @@ type Query {
   ): [Faq!]
   faq(where: FaqWhereUniqueInput!): Faq
   faqsCount(where: FaqWhereInput! = {}): Int
-  categories(
-    where: CategoryWhereInput! = {}
-    orderBy: [CategoryOrderByInput!]! = []
+  goals(
+    where: GoalWhereInput! = {}
+    orderBy: [GoalOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-  ): [Category!]
-  category(where: CategoryWhereUniqueInput!): Category
-  categoriesCount(where: CategoryWhereInput! = {}): Int
+  ): [Goal!]
+  goal(where: GoalWhereUniqueInput!): Goal
+  goalsCount(where: GoalWhereInput! = {}): Int
   members(
     where: MemberWhereInput! = {}
     orderBy: [MemberOrderByInput!]! = []
