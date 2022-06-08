@@ -19,6 +19,7 @@ import { ContentSchema } from './schemas/ContentSchema';
 import { FaqSchema } from './schemas/FaqSchema';
 import { GoalSchema } from './schemas/GoalSchema';
 import { MemberSchema } from './schemas/MemberSchema';
+import { ReservationSchema } from './schemas/ReservationSchema';
 import { UserSchema } from './schemas/UserSchema';
 import { UspSchema } from './schemas/UspSchema';
 
@@ -29,6 +30,7 @@ export const lists: Lists = {
   Faq: FaqSchema,
   Goal: GoalSchema,
   Member: MemberSchema,
+  Reservation: ReservationSchema,
   User: UserSchema,
   Usp: UspSchema,
 };

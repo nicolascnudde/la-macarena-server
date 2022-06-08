@@ -86,6 +86,16 @@ model Member {
   origin    String @default("")
 }
 
+model Reservation {
+  id            Int    @id @default(autoincrement())
+  firstName     String @default("")
+  lastName      String @default("")
+  phone         String @default("")
+  email         String @default("")
+  activityTitle String @default("")
+  activityDate  String @default("")
+}
+
 model User {
   id       Int     @id @default(autoincrement())
   name     String  @default("")

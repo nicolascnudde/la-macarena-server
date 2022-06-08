@@ -555,6 +555,66 @@ input MemberCreateInput {
   origin: String
 }
 
+type Reservation {
+  id: ID!
+  firstName: String
+  lastName: String
+  phone: String
+  email: String
+  activityTitle: String
+  activityDate: String
+}
+
+input ReservationWhereUniqueInput {
+  id: ID
+}
+
+input ReservationWhereInput {
+  AND: [ReservationWhereInput!]
+  OR: [ReservationWhereInput!]
+  NOT: [ReservationWhereInput!]
+  id: IDFilter
+  firstName: StringFilter
+  lastName: StringFilter
+  phone: StringFilter
+  email: StringFilter
+  activityTitle: StringFilter
+  activityDate: StringFilter
+}
+
+input ReservationOrderByInput {
+  id: OrderDirection
+  firstName: OrderDirection
+  lastName: OrderDirection
+  phone: OrderDirection
+  email: OrderDirection
+  activityTitle: OrderDirection
+  activityDate: OrderDirection
+}
+
+input ReservationUpdateInput {
+  firstName: String
+  lastName: String
+  phone: String
+  email: String
+  activityTitle: String
+  activityDate: String
+}
+
+input ReservationUpdateArgs {
+  where: ReservationWhereUniqueInput!
+  data: ReservationUpdateInput!
+}
+
+input ReservationCreateInput {
+  firstName: String
+  lastName: String
+  phone: String
+  email: String
+  activityTitle: String
+  activityDate: String
+}
+
 type User {
   id: ID!
   name: String
@@ -711,6 +771,15 @@ type Mutation {
   updateMembers(data: [MemberUpdateArgs!]!): [Member]
   deleteMember(where: MemberWhereUniqueInput!): Member
   deleteMembers(where: [MemberWhereUniqueInput!]!): [Member]
+  createReservation(data: ReservationCreateInput!): Reservation
+  createReservations(data: [ReservationCreateInput!]!): [Reservation]
+  updateReservation(
+    where: ReservationWhereUniqueInput!
+    data: ReservationUpdateInput!
+  ): Reservation
+  updateReservations(data: [ReservationUpdateArgs!]!): [Reservation]
+  deleteReservation(where: ReservationWhereUniqueInput!): Reservation
+  deleteReservations(where: [ReservationWhereUniqueInput!]!): [Reservation]
   createUser(data: UserCreateInput!): User
   createUsers(data: [UserCreateInput!]!): [User]
   updateUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User
@@ -801,6 +870,14 @@ type Query {
   ): [Member!]
   member(where: MemberWhereUniqueInput!): Member
   membersCount(where: MemberWhereInput! = {}): Int
+  reservations(
+    where: ReservationWhereInput! = {}
+    orderBy: [ReservationOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Reservation!]
+  reservation(where: ReservationWhereUniqueInput!): Reservation
+  reservationsCount(where: ReservationWhereInput! = {}): Int
   users(
     where: UserWhereInput! = {}
     orderBy: [UserOrderByInput!]! = []
