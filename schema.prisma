@@ -12,18 +12,18 @@ generator client {
 }
 
 model Activity {
-  id            Int       @id @default(autoincrement())
-  title         String    @unique @default("")
-  description   String    @default("")
-  image         Json?
-  price         Int
-  numberOfSlots Int
-  category      Category? @relation("Activity_category", fields: [categoryId], references: [id])
-  categoryId    Int?      @map("category")
-  multipleDays  Boolean   @default(false)
-  date          DateTime?
-  fromDate      DateTime?
-  toDate        DateTime?
+  id           Int       @id @default(autoincrement())
+  title        String    @unique @default("")
+  description  String    @default("")
+  image        Json?
+  price        Int
+  slots        Int
+  category     Category? @relation("Activity_category", fields: [categoryId], references: [id])
+  categoryId   Int?      @map("category")
+  multipleDays Boolean   @default(false)
+  date         DateTime?
+  fromDate     DateTime?
+  toDate       DateTime?
 
   @@index([categoryId])
 }
@@ -79,19 +79,20 @@ model Goal {
 }
 
 model Member {
-  id        Int       @id @default(autoincrement())
-  firstName String    @default("")
-  lastName  String    @default("")
+  id        Int    @id @default(autoincrement())
+  firstName String @default("")
+  lastName  String @default("")
   image     Json?
-  birthday  DateTime?
-  origin    String    @default("")
+  origin    String @default("")
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String @default("")
-  email    String @unique @default("")
+  id       Int     @id @default(autoincrement())
+  name     String  @default("")
+  email    String  @unique @default("")
   password String
+  isAdmin  Boolean @default(false)
+  isEditor Boolean @default(false)
 }
 
 model Usp {

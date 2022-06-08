@@ -1,7 +1,9 @@
 import 'dotenv/config';
 import { list } from '@keystone-6/core';
-import { text, timestamp } from '@keystone-6/core/fields';
+import { text } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
+
+import { isAdmin, isAdminOrEditor, isEditor } from '../access';
 
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
@@ -17,12 +19,14 @@ export const MemberSchema = list({
     image: cloudinaryImage({
       cloudinary,
     }),
-    birthday: timestamp(),
     origin: text({ validation: { isRequired: true } }),
   },
-  ui: {
-    listView: {
-      initialColumns: ['firstName', 'lastName', 'image', 'birthday', 'origin'],
+  access: {
+    operation: {
+      query: () => true,
+      create: isAdminOrEditor,
+      update: isAdminOrEditor,
+      delete: isAdminOrEditor,
     },
   },
 });

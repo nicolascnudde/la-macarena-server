@@ -9,6 +9,8 @@ import {
 } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
 
+import { isAdmin, isAdminOrEditor, isEditor } from '../access';
+
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
   apiKey: process.env.CLOUDINARY_API_KEY ?? '',
@@ -36,7 +38,8 @@ export const ActivitySchema = list({
         max: 5000,
       },
     }),
-    numberOfSlots: integer({
+    slots: integer({
+      label: 'Number of slots available',
       validation: {
         isRequired: true,
         min: 1,
@@ -51,5 +54,13 @@ export const ActivitySchema = list({
     date: timestamp(),
     fromDate: timestamp(),
     toDate: timestamp(),
+  },
+  access: {
+    operation: {
+      query: () => true,
+      create: isAdminOrEditor,
+      update: isAdminOrEditor,
+      delete: isAdminOrEditor,
+    },
   },
 });

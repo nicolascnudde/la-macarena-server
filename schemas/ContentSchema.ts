@@ -6,6 +6,8 @@ import { list } from '@keystone-6/core';
 import { text } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
 
+import { isAdmin, isAdminOrEditor, isEditor, isNotAdmin } from '../access';
+
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
   apiKey: process.env.CLOUDINARY_API_KEY ?? '',
@@ -168,5 +170,18 @@ export const ContentSchema = list({
       label: 'Call to action: image',
       cloudinary,
     }),
+  },
+  ui: {
+    hideCreate: isNotAdmin,
+    hideDelete: isAdmin,
+  },
+  access: {
+    operation: {
+      // There should be only one content schema to add all the needed content, there for only the admin role can create or delete it.
+      query: () => true,
+      create: isAdmin,
+      update: isAdminOrEditor,
+      delete: isAdmin,
+    },
   },
 });

@@ -7,7 +7,7 @@ type Activity {
   description: String
   image: CloudinaryImage_File
   price: Int
-  numberOfSlots: Int
+  slots: Int
   category: Category
   multipleDays: Boolean
   date: DateTime
@@ -80,7 +80,7 @@ input ActivityWhereInput {
   title: StringFilter
   description: StringFilter
   price: IntFilter
-  numberOfSlots: IntFilter
+  slots: IntFilter
   category: CategoryWhereInput
   multipleDays: BooleanFilter
   date: DateTimeNullableFilter
@@ -165,7 +165,7 @@ input ActivityOrderByInput {
   title: OrderDirection
   description: OrderDirection
   price: OrderDirection
-  numberOfSlots: OrderDirection
+  slots: OrderDirection
   multipleDays: OrderDirection
   date: OrderDirection
   fromDate: OrderDirection
@@ -182,7 +182,7 @@ input ActivityUpdateInput {
   description: String
   image: Upload
   price: Int
-  numberOfSlots: Int
+  slots: Int
   category: CategoryRelateToOneForUpdateInput
   multipleDays: Boolean
   date: DateTime
@@ -211,7 +211,7 @@ input ActivityCreateInput {
   description: String
   image: Upload
   price: Int
-  numberOfSlots: Int
+  slots: Int
   category: CategoryRelateToOneForCreateInput
   multipleDays: Boolean
   date: DateTime
@@ -512,7 +512,6 @@ type Member {
   firstName: String
   lastName: String
   image: CloudinaryImage_File
-  birthday: DateTime
   origin: String
 }
 
@@ -527,7 +526,6 @@ input MemberWhereInput {
   id: IDFilter
   firstName: StringFilter
   lastName: StringFilter
-  birthday: DateTimeNullableFilter
   origin: StringFilter
 }
 
@@ -535,7 +533,6 @@ input MemberOrderByInput {
   id: OrderDirection
   firstName: OrderDirection
   lastName: OrderDirection
-  birthday: OrderDirection
   origin: OrderDirection
 }
 
@@ -543,7 +540,6 @@ input MemberUpdateInput {
   firstName: String
   lastName: String
   image: Upload
-  birthday: DateTime
   origin: String
 }
 
@@ -556,7 +552,6 @@ input MemberCreateInput {
   firstName: String
   lastName: String
   image: Upload
-  birthday: DateTime
   origin: String
 }
 
@@ -565,6 +560,8 @@ type User {
   name: String
   email: String
   password: PasswordState
+  isAdmin: Boolean
+  isEditor: Boolean
 }
 
 type PasswordState {
@@ -583,18 +580,24 @@ input UserWhereInput {
   id: IDFilter
   name: StringFilter
   email: StringFilter
+  isAdmin: BooleanFilter
+  isEditor: BooleanFilter
 }
 
 input UserOrderByInput {
   id: OrderDirection
   name: OrderDirection
   email: OrderDirection
+  isAdmin: OrderDirection
+  isEditor: OrderDirection
 }
 
 input UserUpdateInput {
   name: String
   email: String
   password: String
+  isAdmin: Boolean
+  isEditor: Boolean
 }
 
 input UserUpdateArgs {
@@ -606,6 +609,8 @@ input UserCreateInput {
   name: String
   email: String
   password: String
+  isAdmin: Boolean
+  isEditor: Boolean
 }
 
 type Usp {
