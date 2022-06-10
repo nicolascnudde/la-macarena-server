@@ -47,7 +47,9 @@ model Content {
   homePageAboutDescription            String @default("")
   activitiesPageHeroTitle             String @unique @default("")
   activitiesPageHeroDescription       String @default("")
+  activitiesPageUpcomingTitle         String @unique @default("")
   activitiesPageUpcomingDescription   String @default("")
+  activitiesPageCategoriesTitle       String @unique @default("")
   activitiesPageCategoriesDescription String @default("")
   aboutPageHeroTitle                  String @unique @default("")
   aboutPageHeroDescription            String @default("")
@@ -61,6 +63,8 @@ model Content {
   contactPageHeroTitle                String @unique @default("")
   contactPageHeroDescription          String @default("")
   contactPageFormImage                Json?
+  contactPageFaqTitle                 String @unique @default("")
+  contactPageFaqDescription           String @default("")
   whoWeAreTitle                       String @default("")
   whoWeAreDescription                 String @default("")
   whoWeAreImage                       Json?

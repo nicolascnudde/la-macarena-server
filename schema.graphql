@@ -272,7 +272,9 @@ type Content {
   homePageAboutDescription: String
   activitiesPageHeroTitle: String
   activitiesPageHeroDescription: String
+  activitiesPageUpcomingTitle: String
   activitiesPageUpcomingDescription: String
+  activitiesPageCategoriesTitle: String
   activitiesPageCategoriesDescription: String
   aboutPageHeroTitle: String
   aboutPageHeroDescription: String
@@ -286,6 +288,8 @@ type Content {
   contactPageHeroTitle: String
   contactPageHeroDescription: String
   contactPageFormImage: CloudinaryImage_File
+  contactPageFaqTitle: String
+  contactPageFaqDescription: String
   whoWeAreTitle: String
   whoWeAreDescription: String
   whoWeAreImage: CloudinaryImage_File
@@ -299,9 +303,12 @@ input ContentWhereUniqueInput {
   id: ID
   homePageHeroTitle: String
   activitiesPageHeroTitle: String
+  activitiesPageUpcomingTitle: String
+  activitiesPageCategoriesTitle: String
   aboutPageHeroTitle: String
   goalsPageHeroTitle: String
   contactPageHeroTitle: String
+  contactPageFaqTitle: String
 }
 
 input ContentWhereInput {
@@ -318,7 +325,9 @@ input ContentWhereInput {
   homePageAboutDescription: StringFilter
   activitiesPageHeroTitle: StringFilter
   activitiesPageHeroDescription: StringFilter
+  activitiesPageUpcomingTitle: StringFilter
   activitiesPageUpcomingDescription: StringFilter
+  activitiesPageCategoriesTitle: StringFilter
   activitiesPageCategoriesDescription: StringFilter
   aboutPageHeroTitle: StringFilter
   aboutPageHeroDescription: StringFilter
@@ -328,6 +337,8 @@ input ContentWhereInput {
   goalsPageHeroDescription: StringFilter
   contactPageHeroTitle: StringFilter
   contactPageHeroDescription: StringFilter
+  contactPageFaqTitle: StringFilter
+  contactPageFaqDescription: StringFilter
   whoWeAreTitle: StringFilter
   whoWeAreDescription: StringFilter
   ctaTitle: StringFilter
@@ -346,7 +357,9 @@ input ContentOrderByInput {
   homePageAboutDescription: OrderDirection
   activitiesPageHeroTitle: OrderDirection
   activitiesPageHeroDescription: OrderDirection
+  activitiesPageUpcomingTitle: OrderDirection
   activitiesPageUpcomingDescription: OrderDirection
+  activitiesPageCategoriesTitle: OrderDirection
   activitiesPageCategoriesDescription: OrderDirection
   aboutPageHeroTitle: OrderDirection
   aboutPageHeroDescription: OrderDirection
@@ -356,6 +369,8 @@ input ContentOrderByInput {
   goalsPageHeroDescription: OrderDirection
   contactPageHeroTitle: OrderDirection
   contactPageHeroDescription: OrderDirection
+  contactPageFaqTitle: OrderDirection
+  contactPageFaqDescription: OrderDirection
   whoWeAreTitle: OrderDirection
   whoWeAreDescription: OrderDirection
   ctaTitle: OrderDirection
@@ -374,7 +389,9 @@ input ContentUpdateInput {
   homePageAboutDescription: String
   activitiesPageHeroTitle: String
   activitiesPageHeroDescription: String
+  activitiesPageUpcomingTitle: String
   activitiesPageUpcomingDescription: String
+  activitiesPageCategoriesTitle: String
   activitiesPageCategoriesDescription: String
   aboutPageHeroTitle: String
   aboutPageHeroDescription: String
@@ -388,6 +405,8 @@ input ContentUpdateInput {
   contactPageHeroTitle: String
   contactPageHeroDescription: String
   contactPageFormImage: Upload
+  contactPageFaqTitle: String
+  contactPageFaqDescription: String
   whoWeAreTitle: String
   whoWeAreDescription: String
   whoWeAreImage: Upload
@@ -413,7 +432,9 @@ input ContentCreateInput {
   homePageAboutDescription: String
   activitiesPageHeroTitle: String
   activitiesPageHeroDescription: String
+  activitiesPageUpcomingTitle: String
   activitiesPageUpcomingDescription: String
+  activitiesPageCategoriesTitle: String
   activitiesPageCategoriesDescription: String
   aboutPageHeroTitle: String
   aboutPageHeroDescription: String
@@ -427,6 +448,8 @@ input ContentCreateInput {
   contactPageHeroTitle: String
   contactPageHeroDescription: String
   contactPageFormImage: Upload
+  contactPageFaqTitle: String
+  contactPageFaqDescription: String
   whoWeAreTitle: String
   whoWeAreDescription: String
   whoWeAreImage: Upload

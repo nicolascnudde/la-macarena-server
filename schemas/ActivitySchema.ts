@@ -42,7 +42,7 @@ export const ActivitySchema = list({
       label: 'Number of slots available',
       validation: {
         isRequired: true,
-        min: 1,
+        min: 0,
         max: 30,
       },
     }),
