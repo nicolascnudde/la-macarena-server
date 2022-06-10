@@ -2,6 +2,9 @@
   "name": "keystone-app",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "16.14.0"
+  },
   "scripts": {
     "dev": "keystone dev",
     "start": "keystone start",
@@ -15,9 +18,6 @@
     "@keystone-6/fields-document": "^1.0.1",
     "dotenv": "^16.0.1",
     "typescript": "^4.5.4"
-  },
-  "engines": {
-    "node": "^14.15 || ^16.13"
   },
   "prettier": {
     "singleQuote": true,
