@@ -16,7 +16,7 @@ import { Lists } from '.keystone/types';
 import { ActivitySchema } from './schemas/ActivitySchema';
 import { CategorySchema } from './schemas/CategorySchema';
 import { ContentSchema } from './schemas/ContentSchema';
-import { FaqSchema } from './schemas/FaqSchema';
+// import { FaqSchema } from './schemas/FaqSchema';
 import { GoalSchema } from './schemas/GoalSchema';
 import { MemberSchema } from './schemas/MemberSchema';
 import { ReservationSchema } from './schemas/ReservationSchema';
@@ -27,7 +27,7 @@ export const lists: Lists = {
   Activity: ActivitySchema,
   Category: CategorySchema,
   Content: ContentSchema,
-  Faq: FaqSchema,
+  // Faq: FaqSchema,
   Goal: GoalSchema,
   Member: MemberSchema,
   Reservation: ReservationSchema,
