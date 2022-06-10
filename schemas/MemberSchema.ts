@@ -21,6 +21,11 @@ export const MemberSchema = list({
     }),
     origin: text({ validation: { isRequired: true } }),
   },
+  ui: {
+    listView: {
+      initialColumns: ['firstName', 'lastName', 'image', 'origin'],
+    },
+  },
   access: {
     operation: {
       query: () => true,

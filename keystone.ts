@@ -16,11 +16,18 @@ import { withAuth, session } from './auth';
 export default withAuth(
   // Using the config function helps typescript guide you to the available options.
   config({
+    db: {
+      provider: 'postgresql',
+      url: process.env.DATABASE_URL ?? 'postgres://nicolas@localhost:5432/la-macarena-keystone-db',
+      idField: { kind: 'autoincrement' },
+    },
     server: {
+      // Port and cors config
       port: 10000,
       cors: {
         credentials: true,
       },
+      // Make a health check endpoint available for the cloud app platform to check on the app's health.
       healthCheck: {
         path: '/my-health-check',
         data: () => ({
@@ -30,13 +37,7 @@ export default withAuth(
         }),
       },
     },
-    db: {
-      provider: 'postgresql',
-      url:
-        process.env.DATABASE_URL ??
-        'postgres://localhost:5432/la-macarena-keystone-db',
-      idField: { kind: 'autoincrement' },
-    },
+    // GraphQL config so that we can do graphql queries and mutations
     graphql: {
       playground: true,
       apolloConfig: {

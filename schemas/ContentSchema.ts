@@ -6,7 +6,7 @@ import { list } from '@keystone-6/core';
 import { text } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
 
-import { isAdmin, isAdminOrEditor, isEditor, isNotAdmin } from '../access';
+import { isAdmin, isAdminOrEditor, isNotAdmin } from '../access';
 
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
@@ -45,6 +45,10 @@ export const ContentSchema = list({
     homePageHeroImage: cloudinaryImage({
       label: 'Home page: Hero image',
       cloudinary,
+    }),
+    homePageHeroButtonText: text({
+      label: 'Home page: Hero button text (note: the button link will always lead to the activities page)',
+      validation: { isRequired: true },
     }),
     // The 'what we do'/info section
     homePageAboutTitle: text({
@@ -110,6 +114,14 @@ export const ContentSchema = list({
       ui: { displayMode: 'textarea' },
       validation: { isRequired: true },
     }),
+    aboutPageStoryImageOne: cloudinaryImage({
+      label: 'About page: About (our story) image #1 (only visible on desktop)',
+      cloudinary,
+    }),
+    aboutPageStoryImageTwo: cloudinaryImage({
+      label: 'About page: About (our story) image #2 (only visible on desktop)',
+      cloudinary,
+    }),
 
     /**
      * Goals page content
@@ -140,20 +152,28 @@ export const ContentSchema = list({
       ui: { displayMode: 'textarea' },
       validation: { isRequired: true },
     }),
+    contactPageFormImage: cloudinaryImage({
+      label: 'Contact page: Contact form image (only visible on desktop)',
+      cloudinary,
+    }),
 
     /**
      * Content of components that are used on multiple pages
      */
     // Who we are/team content
     whoWeAreTitle: text({
-      label: 'Who we are: title',
+      label: 'Who we are (team section): title',
       ui: { displayMode: 'textarea' },
       validation: { isRequired: true },
     }),
     whoWeAreDescription: text({
-      label: 'Who we are: description',
+      label: 'Who we are (team section): description',
       ui: { displayMode: 'textarea' },
       validation: { isRequired: true },
+    }),
+    whoWeAreImage: cloudinaryImage({
+      label: 'Who we are (team section): image',
+      cloudinary,
     }),
 
     // CTA component content
@@ -170,10 +190,17 @@ export const ContentSchema = list({
       label: 'Call to action: image',
       cloudinary,
     }),
+    ctaButtonText: text({
+      label: 'Call to action: button text (note: the button link will always lead to the contact page)',
+      validation: { isRequired: true },
+    }),
   },
   ui: {
     hideCreate: isNotAdmin,
     hideDelete: isAdmin,
+    listView: {
+      initialColumns: ['homePageHeroTitle', 'homePageHeroDescription', 'homePageHeroImage']
+    }
   },
   access: {
     operation: {

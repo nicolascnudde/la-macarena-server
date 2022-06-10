@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import { list } from '@keystone-6/core';
-import { text } from '@keystone-6/core/fields';
+import { integer, text, timestamp } from '@keystone-6/core/fields';
 
-import { isAdminOrEditor, isNotAdminOrEditor } from '../access';
+import { isAdminOrEditor } from '../access';
 
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
@@ -19,26 +19,38 @@ export const ReservationSchema = list({
     lastName: text({
       validation: { isRequired: true },
     }),
-    phone: text({
+    email: text({
       validation: { isRequired: true },
     }),
-    email: text({
+    phone: text({
       validation: { isRequired: true },
     }),
     activityTitle: text({
       validation: { isRequired: true },
     }),
+    activityPrice: integer({
+      validation: { isRequired: true },
+    }),
     activityDate: text({
       validation: { isRequired: true },
+    }),
+    message: text({
+      ui: { displayMode: 'textarea' },
+    }),
+    createdAt: timestamp({
+      label: 'Created at (the date and time the form was submitted):',
     }),
   },
   ui: {
     hideCreate: true,
+    listView: {
+      initialColumns: ['id', 'activityTitle', 'firstName', 'lastName'],
+    },
   },
   access: {
     operation: {
       query: isAdminOrEditor,
-      create: isNotAdminOrEditor,
+      create: () => true,
       update: () => false,
       delete: isAdminOrEditor,
     },

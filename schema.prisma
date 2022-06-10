@@ -12,18 +12,17 @@ generator client {
 }
 
 model Activity {
-  id           Int       @id @default(autoincrement())
-  title        String    @unique @default("")
-  description  String    @default("")
-  image        Json?
-  price        Int
-  slots        Int
-  category     Category? @relation("Activity_category", fields: [categoryId], references: [id])
-  categoryId   Int?      @map("category")
-  multipleDays Boolean   @default(false)
-  date         DateTime?
-  fromDate     DateTime?
-  toDate       DateTime?
+  id          Int       @id @default(autoincrement())
+  title       String    @unique @default("")
+  description String    @default("")
+  image       Json?
+  price       Int
+  slots       Int
+  category    Category? @relation("Activity_category", fields: [categoryId], references: [id])
+  categoryId  Int?      @map("category")
+  date        DateTime?
+  toDate      DateTime?
+  wysiwyg     Json      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
 
   @@index([categoryId])
 }
@@ -43,6 +42,7 @@ model Content {
   homePageHeroTitle                   String @unique @default("")
   homePageHeroDescription             String @default("")
   homePageHeroImage                   Json?
+  homePageHeroButtonText              String @default("")
   homePageAboutTitle                  String @default("")
   homePageAboutDescription            String @default("")
   activitiesPageHeroTitle             String @unique @default("")
@@ -54,28 +54,35 @@ model Content {
   aboutPageHeroImage                  Json?
   aboutPageStoryTitle                 String @default("")
   aboutPageStoryDescription           String @default("")
+  aboutPageStoryImageOne              Json?
+  aboutPageStoryImageTwo              Json?
   goalsPageHeroTitle                  String @unique @default("")
   goalsPageHeroDescription            String @default("")
   contactPageHeroTitle                String @unique @default("")
   contactPageHeroDescription          String @default("")
+  contactPageFormImage                Json?
   whoWeAreTitle                       String @default("")
   whoWeAreDescription                 String @default("")
+  whoWeAreImage                       Json?
   ctaTitle                            String @default("")
   ctaDescription                      String @default("")
   ctaImage                            Json?
+  ctaButtonText                       String @default("")
 }
 
 model Faq {
-  id       Int    @id @default(autoincrement())
-  question String @unique @default("")
-  answer   String @default("")
+  id         Int     @id @default(autoincrement())
+  question   String  @unique @default("")
+  answer     String  @default("")
+  isExpanded Boolean @default(false)
 }
 
 model Goal {
-  id          Int    @id @default(autoincrement())
-  title       String @unique @default("")
-  description String @default("")
+  id          Int     @id @default(autoincrement())
+  title       String  @unique @default("")
+  description String  @default("")
   image       Json?
+  imageRight  Boolean @default(false)
 }
 
 model Member {
@@ -87,13 +94,16 @@ model Member {
 }
 
 model Reservation {
-  id            Int    @id @default(autoincrement())
-  firstName     String @default("")
-  lastName      String @default("")
-  phone         String @default("")
-  email         String @default("")
-  activityTitle String @default("")
-  activityDate  String @default("")
+  id            Int       @id @default(autoincrement())
+  firstName     String    @default("")
+  lastName      String    @default("")
+  email         String    @default("")
+  phone         String    @default("")
+  activityTitle String    @default("")
+  activityPrice Int
+  activityDate  String    @default("")
+  message       String    @default("")
+  createdAt     DateTime?
 }
 
 model User {

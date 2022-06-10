@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import { list } from '@keystone-6/core';
-import { text } from '@keystone-6/core/fields';
+import { checkbox, text } from '@keystone-6/core/fields';
 
-import { isAdmin, isAdminOrEditor, isEditor } from '../access';
+import { isAdminOrEditor } from '../access';
 
 export const FaqSchema = list({
   fields: {
@@ -14,6 +14,15 @@ export const FaqSchema = list({
       ui: { displayMode: 'textarea' },
       validation: { isRequired: true },
     }),
+    isExpanded: checkbox({
+      label: 'Automatically expand',
+      defaultValue: false,
+    })
+  },
+  ui: {
+    listView: {
+      initialColumns: ['question', 'answer', 'isExpanded'],
+    }
   },
   access: {
     operation: {

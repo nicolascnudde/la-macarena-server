@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { list } from '@keystone-6/core';
-import { text } from '@keystone-6/core/fields';
+import { checkbox, text } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
 
 import { isAdmin, isAdminOrEditor, isEditor } from '../access';
@@ -24,6 +24,9 @@ export const GoalSchema = list({
     }),
     image: cloudinaryImage({
       cloudinary,
+    }),
+    imageRight: checkbox({
+      defaultValue: false,
     }),
   },
   access: {

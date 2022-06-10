@@ -5,11 +5,11 @@ import {
   relationship,
   text,
   timestamp,
-  checkbox,
 } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
+import { document } from '@keystone-6/fields-document';
 
-import { isAdmin, isAdminOrEditor, isEditor } from '../access';
+import { isAdminOrEditor } from '../access';
 
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
@@ -49,11 +49,34 @@ export const ActivitySchema = list({
     category: relationship({
       ref: 'Category',
       many: false,
+      ui: {
+        hideCreate: true,
+      },
     }),
-    multipleDays: checkbox(),
     date: timestamp(),
-    fromDate: timestamp(),
-    toDate: timestamp(),
+    toDate: timestamp({
+      label: 'To date (leave empty if the activity is just one day)',
+    }),
+    wysiwyg: document({
+      label:
+        'WYSIWYG: This will be the main content block inside an activity page',
+      formatting: {
+        inlineMarks: {
+          bold: true,
+          italic: true,
+          underline: true,
+        },
+        listTypes: {
+          ordered: true,
+          unordered: true,
+        },
+        alignment: {
+          center: true,
+          end: true,
+        },
+        headingLevels: [2, 3],
+      },
+    }),
   },
   access: {
     operation: {
