@@ -18,16 +18,16 @@ export default withAuth(
   config({
     db: {
       provider: 'postgresql',
-      url: process.env.DATABASE_URL ?? 'postgres://nicolas@localhost:5432/la-macarena-keystone-db',
+      url: process.env.DATABASE_URL || `postgres://${process.env.USER}@localhost:5432/la-macarena-keystone-db`,
       idField: { kind: 'autoincrement' },
     },
     server: {
       // Port and cors config
-      port: 10000,
+      port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
       cors: {
         credentials: true,
       },
-      // Make a health check endpoint available for the cloud app platform to check on the app's health.
+      // Create a health check endpoint that will be available for the cloud app platform to check on the app's health.
       healthCheck: {
         path: '/my-health-check',
         data: () => ({
