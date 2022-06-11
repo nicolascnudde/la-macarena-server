@@ -83,7 +83,6 @@ export const ContentSchema = list({
     activitiesPageUpcomingDescription: text({
       label: '[Activities page] → Upcoming activities description',
       ui: { displayMode: 'textarea' },
-      validation: { isRequired: true },
     }),
     activitiesPageCategoriesTitle: text({
       isIndexed: 'unique',
@@ -93,7 +92,6 @@ export const ContentSchema = list({
     activitiesPageCategoriesDescription: text({
       label: '[Activities page] → Categories description',
       ui: { displayMode: 'textarea' },
-      validation: { isRequired: true },
     }),
 
     /**
