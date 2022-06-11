@@ -11,6 +11,9 @@ import {
 } from '@keystone-6/core/testing';
 import config from '../keystone';
 
+// Set the testing database so we don't drop the data from the production database
+config.db.url = process.env.DATABASE_URL_TESTING || `postgres://${process.env.USER}@localhost:5432/la-macarena-keystone-db`;
+
 // Setup a test runner which will provide a clean test environment
 // with access to our GraphQL API for each test.
 const runner = setupTestRunner({ config });
