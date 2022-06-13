@@ -48,6 +48,7 @@ model Content {
   whoWeAreTitle                       String @default("")
   whoWeAreDescription                 String @default("")
   whoWeAreImage                       Json?
+  whoWeAreButtonText                  String @default("")
   ctaTitle                            String @default("")
   ctaDescription                      String @default("")
   ctaImage                            Json?

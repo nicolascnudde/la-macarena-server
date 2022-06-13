@@ -68,25 +68,27 @@ export const ContentSchema = list({
       label: '[Home & About pages] → Team section (Who we are) image',
       cloudinary,
     }),
+    whoWeAreButtonText: text({
+      label: '[Home & About pages] → Team section (Who we are) button text (note: the button link will always lead to the about page)',
+      validation: { isRequired: true },
+    }),
 
     // CTA component content
     ctaTitle: text({
-      label: '[Home, Activities, About, Goals pages] → Call to action title',
+      label: '[Home, Activities, About & Goals pages] → Call to action title',
       validation: { isRequired: true },
     }),
     ctaDescription: text({
-      label:
-        '[Home, Activities, About, Goals pages] → Call to action description',
+      label: '[Home, Activities, About & Goals pages] → Call to action description',
       ui: { displayMode: 'textarea' },
       validation: { isRequired: true },
     }),
     ctaImage: cloudinaryImage({
-      label: '[Home, Activities, About, Goals pages] → Call to action image',
+      label: '[Home, Activities, About & Goals pages] → Call to action image',
       cloudinary,
     }),
     ctaButtonText: text({
-      label:
-        '[Home, Activities, About & Goals pages] → Call to action button text (note: the button link will always lead to the contact page)',
+      label: '[Home, Activities, About & Goals pages] → Call to action button text (note: the button link will always lead to the contact page)',
       validation: { isRequired: true },
     }),
 

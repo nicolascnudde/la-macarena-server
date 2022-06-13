@@ -281,6 +281,7 @@ type Content {
   whoWeAreTitle: String
   whoWeAreDescription: String
   whoWeAreImage: CloudinaryImage_File
+  whoWeAreButtonText: String
   ctaTitle: String
   ctaDescription: String
   ctaImage: CloudinaryImage_File
@@ -333,6 +334,7 @@ input ContentWhereInput {
   homePageAboutDescription: StringFilter
   whoWeAreTitle: StringFilter
   whoWeAreDescription: StringFilter
+  whoWeAreButtonText: StringFilter
   ctaTitle: StringFilter
   ctaDescription: StringFilter
   ctaButtonText: StringFilter
@@ -365,6 +367,7 @@ input ContentOrderByInput {
   homePageAboutDescription: OrderDirection
   whoWeAreTitle: OrderDirection
   whoWeAreDescription: OrderDirection
+  whoWeAreButtonText: OrderDirection
   ctaTitle: OrderDirection
   ctaDescription: OrderDirection
   ctaButtonText: OrderDirection
@@ -398,6 +401,7 @@ input ContentUpdateInput {
   whoWeAreTitle: String
   whoWeAreDescription: String
   whoWeAreImage: Upload
+  whoWeAreButtonText: String
   ctaTitle: String
   ctaDescription: String
   ctaImage: Upload
@@ -441,6 +445,7 @@ input ContentCreateInput {
   whoWeAreTitle: String
   whoWeAreDescription: String
   whoWeAreImage: Upload
+  whoWeAreButtonText: String
   ctaTitle: String
   ctaDescription: String
   ctaImage: Upload
