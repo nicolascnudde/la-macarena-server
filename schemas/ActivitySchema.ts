@@ -53,6 +53,12 @@ export const ActivitySchema = list({
         hideCreate: true,
       },
     }),
+    location: text({
+      validation: { isRequired: true },
+    }),
+    duration: text({
+      validation: { isRequired: true },
+    }),
     date: timestamp(),
     toDate: timestamp({
       label: 'To date (leave empty if the activity is just one day)',

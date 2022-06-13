@@ -9,6 +9,8 @@ type Activity {
   price: Int
   slots: Int
   category: Category
+  location: String
+  duration: String
   date: DateTime
   toDate: DateTime
   wysiwyg: Activity_wysiwyg_Document
@@ -85,6 +87,8 @@ input ActivityWhereInput {
   price: IntFilter
   slots: IntFilter
   category: CategoryWhereInput
+  location: StringFilter
+  duration: StringFilter
   date: DateTimeNullableFilter
   toDate: DateTimeNullableFilter
 }
@@ -162,6 +166,8 @@ input ActivityOrderByInput {
   description: OrderDirection
   price: OrderDirection
   slots: OrderDirection
+  location: OrderDirection
+  duration: OrderDirection
   date: OrderDirection
   toDate: OrderDirection
 }
@@ -178,6 +184,8 @@ input ActivityUpdateInput {
   price: Int
   slots: Int
   category: CategoryRelateToOneForUpdateInput
+  location: String
+  duration: String
   date: DateTime
   toDate: DateTime
   wysiwyg: JSON
@@ -206,6 +214,8 @@ input ActivityCreateInput {
   price: Int
   slots: Int
   category: CategoryRelateToOneForCreateInput
+  location: String
+  duration: String
   date: DateTime
   toDate: DateTime
   wysiwyg: JSON

@@ -18,7 +18,7 @@ export default withAuth(
   config({
     db: {
       provider: 'postgresql',
-      url: `postgres://${process.env.USER}@localhost:5432/la-macarena-keystone-db`,
+      url: process.env.DATABASE_URL || `postgres://${process.env.USER}@localhost:5432/la-macarena-keystone-db`,
       idField: { kind: 'autoincrement' },
     },
     server: {

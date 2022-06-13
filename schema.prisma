@@ -20,6 +20,8 @@ model Activity {
   slots       Int
   category    Category? @relation("Activity_category", fields: [categoryId], references: [id])
   categoryId  Int?      @map("category")
+  location    String    @default("")
+  duration    String    @default("")
   date        DateTime?
   toDate      DateTime?
   wysiwyg     Json      @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")

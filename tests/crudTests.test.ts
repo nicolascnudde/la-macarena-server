@@ -1,7 +1,7 @@
 /**
  * WARNING:
  * 
- * The test runner will drop all data in the database on each run. Make sure you do NOT run your tests against a system with live data.
+ * The test runner will drop all data in the database on each run. Make sure you do NOT run your tests on a database with live data.
  */
 import { KeystoneContext } from '@keystone-6/core/types';
 import {

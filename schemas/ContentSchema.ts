@@ -18,19 +18,9 @@ export const cloudinary = {
 export const ContentSchema = list({
   fields: {
     /**
-     * Social media
-     */
-    socialMediaInstagram: text({
-      label: '[Social media] → Instagram',
-      validation: { isRequired: true },
-    }),
-    socialMediaFacebook: text({
-      label: '[Social media] → Facebook',
-      validation: { isRequired: true },
-    }),
-    /**
      * Home page content
      */
+
     // The hero section
     homePageHeroTitle: text({
       isIndexed: 'unique',
@@ -47,9 +37,11 @@ export const ContentSchema = list({
       cloudinary,
     }),
     homePageHeroButtonText: text({
-      label: '[Home page] → Hero button text (note: the button link will always lead to the activities page)',
+      label:
+        '[Home page] → Hero button text (note: the button link will always lead to the activities page)',
       validation: { isRequired: true },
     }),
+
     // The 'what we do'/info section
     homePageAboutTitle: text({
       label: '[Home page] → About (what we do) title',
@@ -61,9 +53,47 @@ export const ContentSchema = list({
       validation: { isRequired: true },
     }),
 
+    // The team section (who we are)
+    whoWeAreTitle: text({
+      label: '[Home & About pages] → Team section (Who we are) title',
+      ui: { displayMode: 'textarea' },
+      validation: { isRequired: true },
+    }),
+    whoWeAreDescription: text({
+      label: '[Home & About pages] → Team section (Who we are) description',
+      ui: { displayMode: 'textarea' },
+      validation: { isRequired: true },
+    }),
+    whoWeAreImage: cloudinaryImage({
+      label: '[Home & About pages] → Team section (Who we are) image',
+      cloudinary,
+    }),
+
+    // CTA component content
+    ctaTitle: text({
+      label: '[Home, Activities, About, Goals pages] → Call to action title',
+      validation: { isRequired: true },
+    }),
+    ctaDescription: text({
+      label:
+        '[Home, Activities, About, Goals pages] → Call to action description',
+      ui: { displayMode: 'textarea' },
+      validation: { isRequired: true },
+    }),
+    ctaImage: cloudinaryImage({
+      label: '[Home, Activities, About, Goals pages] → Call to action image',
+      cloudinary,
+    }),
+    ctaButtonText: text({
+      label:
+        '[Home, Activities, About & Goals pages] → Call to action button text (note: the button link will always lead to the contact page)',
+      validation: { isRequired: true },
+    }),
+
     /**
      * Activities page content
      */
+
     // The hero section
     activitiesPageHeroTitle: text({
       isIndexed: 'unique',
@@ -97,6 +127,7 @@ export const ContentSchema = list({
     /**
      * About page content
      */
+
     // The hero section
     aboutPageHeroTitle: text({
       isIndexed: 'unique',
@@ -112,6 +143,7 @@ export const ContentSchema = list({
       label: '[About page] → Hero image',
       cloudinary,
     }),
+
     // The 'our story'/info section
     aboutPageStoryTitle: text({
       label: '[About page] → About (our story) title',
@@ -123,17 +155,20 @@ export const ContentSchema = list({
       validation: { isRequired: true },
     }),
     aboutPageStoryImageOne: cloudinaryImage({
-      label: '[About page] → About (our story) image #1 (only visible on desktop)',
+      label:
+        '[About page] → About (our story) image #1 (only visible on desktop)',
       cloudinary,
     }),
     aboutPageStoryImageTwo: cloudinaryImage({
-      label: '[About page] → About (our story) image #2 (only visible on desktop)',
+      label:
+        '[About page] → About (our story) image #2 (only visible on desktop)',
       cloudinary,
     }),
 
     /**
      * Goals page content
      */
+
     // The hero section
     goalsPageHeroTitle: text({
       isIndexed: 'unique',
@@ -149,6 +184,7 @@ export const ContentSchema = list({
     /**
      * Contact page content
      */
+
     // The hero section
     contactPageHeroTitle: text({
       isIndexed: 'unique',
@@ -164,6 +200,8 @@ export const ContentSchema = list({
       label: '[Contact page] → Contact form image (only visible on desktop)',
       cloudinary,
     }),
+
+    // The faq section
     contactPageFaqTitle: text({
       isIndexed: 'unique',
       label: '[Contact page] → FAQ title',
@@ -177,38 +215,16 @@ export const ContentSchema = list({
     /**
      * Content of components that are used on multiple pages
      */
-    // Who we are/team content
-    whoWeAreTitle: text({
-      label: '[Who we are (team section)] → title',
-      ui: { displayMode: 'textarea' },
-      validation: { isRequired: true },
-    }),
-    whoWeAreDescription: text({
-      label: '[Who we are (team section)] → description',
-      ui: { displayMode: 'textarea' },
-      validation: { isRequired: true },
-    }),
-    whoWeAreImage: cloudinaryImage({
-      label: '[Who we are (team section)] → image',
-      cloudinary,
-    }),
 
-    // CTA component content
-    ctaTitle: text({
-      label: '[Call to action] → title',
+    /**
+     * Social media
+     */
+    socialMediaInstagram: text({
+      label: '[Social media] → Instagram',
       validation: { isRequired: true },
     }),
-    ctaDescription: text({
-      label: '[Call to action] → description',
-      ui: { displayMode: 'textarea' },
-      validation: { isRequired: true },
-    }),
-    ctaImage: cloudinaryImage({
-      label: '[Call to action] → image',
-      cloudinary,
-    }),
-    ctaButtonText: text({
-      label: '[Call to action] → button text (note: the button link will always lead to the contact page)',
+    socialMediaFacebook: text({
+      label: '[Social media] → Facebook',
       validation: { isRequired: true },
     }),
   },
@@ -216,8 +232,12 @@ export const ContentSchema = list({
     hideCreate: isNotAdmin,
     hideDelete: isAdmin,
     listView: {
-      initialColumns: ['homePageHeroTitle', 'homePageHeroDescription', 'homePageHeroImage']
-    }
+      initialColumns: [
+        'homePageHeroTitle',
+        'homePageHeroDescription',
+        'homePageHeroImage',
+      ],
+    },
   },
   access: {
     operation: {
