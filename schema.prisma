@@ -39,14 +39,19 @@ model Category {
 
 model Content {
   id                                  Int    @id @default(autoincrement())
-  socialMediaInstagram                String @default("")
-  socialMediaFacebook                 String @default("")
   homePageHeroTitle                   String @unique @default("")
   homePageHeroDescription             String @default("")
   homePageHeroImage                   Json?
   homePageHeroButtonText              String @default("")
   homePageAboutTitle                  String @default("")
   homePageAboutDescription            String @default("")
+  whoWeAreTitle                       String @default("")
+  whoWeAreDescription                 String @default("")
+  whoWeAreImage                       Json?
+  ctaTitle                            String @default("")
+  ctaDescription                      String @default("")
+  ctaImage                            Json?
+  ctaButtonText                       String @default("")
   activitiesPageHeroTitle             String @unique @default("")
   activitiesPageHeroDescription       String @default("")
   activitiesPageUpcomingTitle         String @unique @default("")
@@ -67,13 +72,8 @@ model Content {
   contactPageFormImage                Json?
   contactPageFaqTitle                 String @unique @default("")
   contactPageFaqDescription           String @default("")
-  whoWeAreTitle                       String @default("")
-  whoWeAreDescription                 String @default("")
-  whoWeAreImage                       Json?
-  ctaTitle                            String @default("")
-  ctaDescription                      String @default("")
-  ctaImage                            Json?
-  ctaButtonText                       String @default("")
+  socialMediaInstagram                String @default("")
+  socialMediaFacebook                 String @default("")
 }
 
 model Faq {

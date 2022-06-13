@@ -272,14 +272,19 @@ input CategoryCreateInput {
 
 type Content {
   id: ID!
-  socialMediaInstagram: String
-  socialMediaFacebook: String
   homePageHeroTitle: String
   homePageHeroDescription: String
   homePageHeroImage: CloudinaryImage_File
   homePageHeroButtonText: String
   homePageAboutTitle: String
   homePageAboutDescription: String
+  whoWeAreTitle: String
+  whoWeAreDescription: String
+  whoWeAreImage: CloudinaryImage_File
+  ctaTitle: String
+  ctaDescription: String
+  ctaImage: CloudinaryImage_File
+  ctaButtonText: String
   activitiesPageHeroTitle: String
   activitiesPageHeroDescription: String
   activitiesPageUpcomingTitle: String
@@ -300,13 +305,8 @@ type Content {
   contactPageFormImage: CloudinaryImage_File
   contactPageFaqTitle: String
   contactPageFaqDescription: String
-  whoWeAreTitle: String
-  whoWeAreDescription: String
-  whoWeAreImage: CloudinaryImage_File
-  ctaTitle: String
-  ctaDescription: String
-  ctaImage: CloudinaryImage_File
-  ctaButtonText: String
+  socialMediaInstagram: String
+  socialMediaFacebook: String
 }
 
 input ContentWhereUniqueInput {
@@ -326,13 +326,16 @@ input ContentWhereInput {
   OR: [ContentWhereInput!]
   NOT: [ContentWhereInput!]
   id: IDFilter
-  socialMediaInstagram: StringFilter
-  socialMediaFacebook: StringFilter
   homePageHeroTitle: StringFilter
   homePageHeroDescription: StringFilter
   homePageHeroButtonText: StringFilter
   homePageAboutTitle: StringFilter
   homePageAboutDescription: StringFilter
+  whoWeAreTitle: StringFilter
+  whoWeAreDescription: StringFilter
+  ctaTitle: StringFilter
+  ctaDescription: StringFilter
+  ctaButtonText: StringFilter
   activitiesPageHeroTitle: StringFilter
   activitiesPageHeroDescription: StringFilter
   activitiesPageUpcomingTitle: StringFilter
@@ -349,22 +352,22 @@ input ContentWhereInput {
   contactPageHeroDescription: StringFilter
   contactPageFaqTitle: StringFilter
   contactPageFaqDescription: StringFilter
-  whoWeAreTitle: StringFilter
-  whoWeAreDescription: StringFilter
-  ctaTitle: StringFilter
-  ctaDescription: StringFilter
-  ctaButtonText: StringFilter
+  socialMediaInstagram: StringFilter
+  socialMediaFacebook: StringFilter
 }
 
 input ContentOrderByInput {
   id: OrderDirection
-  socialMediaInstagram: OrderDirection
-  socialMediaFacebook: OrderDirection
   homePageHeroTitle: OrderDirection
   homePageHeroDescription: OrderDirection
   homePageHeroButtonText: OrderDirection
   homePageAboutTitle: OrderDirection
   homePageAboutDescription: OrderDirection
+  whoWeAreTitle: OrderDirection
+  whoWeAreDescription: OrderDirection
+  ctaTitle: OrderDirection
+  ctaDescription: OrderDirection
+  ctaButtonText: OrderDirection
   activitiesPageHeroTitle: OrderDirection
   activitiesPageHeroDescription: OrderDirection
   activitiesPageUpcomingTitle: OrderDirection
@@ -381,22 +384,24 @@ input ContentOrderByInput {
   contactPageHeroDescription: OrderDirection
   contactPageFaqTitle: OrderDirection
   contactPageFaqDescription: OrderDirection
-  whoWeAreTitle: OrderDirection
-  whoWeAreDescription: OrderDirection
-  ctaTitle: OrderDirection
-  ctaDescription: OrderDirection
-  ctaButtonText: OrderDirection
+  socialMediaInstagram: OrderDirection
+  socialMediaFacebook: OrderDirection
 }
 
 input ContentUpdateInput {
-  socialMediaInstagram: String
-  socialMediaFacebook: String
   homePageHeroTitle: String
   homePageHeroDescription: String
   homePageHeroImage: Upload
   homePageHeroButtonText: String
   homePageAboutTitle: String
   homePageAboutDescription: String
+  whoWeAreTitle: String
+  whoWeAreDescription: String
+  whoWeAreImage: Upload
+  ctaTitle: String
+  ctaDescription: String
+  ctaImage: Upload
+  ctaButtonText: String
   activitiesPageHeroTitle: String
   activitiesPageHeroDescription: String
   activitiesPageUpcomingTitle: String
@@ -417,13 +422,8 @@ input ContentUpdateInput {
   contactPageFormImage: Upload
   contactPageFaqTitle: String
   contactPageFaqDescription: String
-  whoWeAreTitle: String
-  whoWeAreDescription: String
-  whoWeAreImage: Upload
-  ctaTitle: String
-  ctaDescription: String
-  ctaImage: Upload
-  ctaButtonText: String
+  socialMediaInstagram: String
+  socialMediaFacebook: String
 }
 
 input ContentUpdateArgs {
@@ -432,14 +432,19 @@ input ContentUpdateArgs {
 }
 
 input ContentCreateInput {
-  socialMediaInstagram: String
-  socialMediaFacebook: String
   homePageHeroTitle: String
   homePageHeroDescription: String
   homePageHeroImage: Upload
   homePageHeroButtonText: String
   homePageAboutTitle: String
   homePageAboutDescription: String
+  whoWeAreTitle: String
+  whoWeAreDescription: String
+  whoWeAreImage: Upload
+  ctaTitle: String
+  ctaDescription: String
+  ctaImage: Upload
+  ctaButtonText: String
   activitiesPageHeroTitle: String
   activitiesPageHeroDescription: String
   activitiesPageUpcomingTitle: String
@@ -460,13 +465,8 @@ input ContentCreateInput {
   contactPageFormImage: Upload
   contactPageFaqTitle: String
   contactPageFaqDescription: String
-  whoWeAreTitle: String
-  whoWeAreDescription: String
-  whoWeAreImage: Upload
-  ctaTitle: String
-  ctaDescription: String
-  ctaImage: Upload
-  ctaButtonText: String
+  socialMediaInstagram: String
+  socialMediaFacebook: String
 }
 
 type Faq {
