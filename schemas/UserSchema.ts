@@ -1,7 +1,7 @@
 import { list } from '@keystone-6/core';
 import { checkbox, text, password } from '@keystone-6/core/fields';
 
-import { isAdmin, isAdminOrEditor, isEditor } from '../access';
+import { isAdmin, isAdminOrEditor } from '../access';
 
 export const UserSchema = list({
   // Here are the fields that `User` will have. We want an email and password so they can log in

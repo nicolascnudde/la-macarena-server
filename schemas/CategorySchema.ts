@@ -3,7 +3,7 @@ import { list } from '@keystone-6/core';
 import { text } from '@keystone-6/core/fields';
 import { cloudinaryImage } from '@keystone-6/cloudinary';
 
-import { isAdmin, isAdminOrEditor, isEditor } from '../access';
+import { isAdminOrEditor } from '../access';
 
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
