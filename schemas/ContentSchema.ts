@@ -215,10 +215,6 @@ export const ContentSchema = list({
     }),
 
     /**
-     * Content of components that are used on multiple pages
-     */
-
-    /**
      * Social media
      */
     socialMediaInstagram: text({
