@@ -25,7 +25,7 @@ export default withAuth(
       // Port and cors config
       port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
       cors: {
-        origin: ['http://localhost:3000', 'https://la-macarena.vercel.app', 'https://la-macarena-pgm-nicolascnudde.vercel.app', 'https://lamacarena.be', 'https://www.lamacarena.be'],
+        origin: ['http://localhost:3000', 'https://la-macarena.vercel.app', 'https://lamacarena.be', 'https://www.lamacarena.be'],
         credentials: true,
       },
       // Create a health check endpoint that will be available for the cloud app platform to check on the app's health.
